@@ -1,0 +1,24 @@
+body {
+    font: 14pt sans-serif;
+}
+
+header {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background-color: rgba(47, 109, 249, 0.5)
+}
+
+svg {
+    border: 3px solid black;
+}
+
+input:invalid {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.variables {
+    padding: 10px;
+    /*position: relative;*/
+    /*top: -500px;*/
+    /*left: 520px;*/
+}
