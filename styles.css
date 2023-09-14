@@ -7,13 +7,14 @@ body {
     border: 3px solid rgb(10, 47, 134);;
     display: flex;
     font-size: 28pt;
+    justify-content: start;
     font-weight: bold;
-    padding: 10px 10px 15px;
+    padding: 10px 10px 10px;
     margin-bottom: 10px;
 }
 
 .header-text {
-    padding-right: 100px;
+    margin-right: 50px;
     color: white;
     text-shadow: 2px 2px rgb(10, 47, 134);
 }

@@ -1,6 +1,7 @@
 const yInput = document.getElementById("y_input")
 const calcButton = document.getElementById("calc_button")
 const inputErrorMessage = document.getElementById("input-message")
+const resultTable = document.getElementById("result-table")
 
 yInput.addEventListener("input", () => {
     yInput.setCustomValidity("")
@@ -9,8 +10,23 @@ calcButton.onclick = handleCalculateButtonPress
 
 function handleCalculateButtonPress() {
     if (checkInput() & checkCheckboxes()) {
-        alert("nice")
+        sendParameters()
     }
+}
+
+function sendParameters() {
+    let x = document.querySelectorAll('input[name="xbox"]:checked')[0].value
+    let y = yInput.value;
+    let r = document.querySelectorAll('input[name="rbox"]:checked')[0].value
+    $.ajax({
+        type: "POST",
+        url: "main.php",
+        dataType: "html",
+        data: "&x=" + x + "&y=" + y + "&r=" + r + "&time" + new Date().toTimeString(),
+        success: function(data) {
+            resultTable.innerHTML += data
+        }
+    })
 }
 
 function checkInput() {
