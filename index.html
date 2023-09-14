@@ -9,7 +9,11 @@
 <body>
 
 <header>
-    <h1>Kozhukhin Ivan Alekseevich&nbsp;&nbsp;&nbsp;&nbsp;P3218&nbsp;&nbsp;&nbsp;&nbsp;2805</h1>
+    <div class="header">
+        <div class="header-text">Kozhukhin I. A.</div>
+        <div class="header-text">P3218</div>
+        <div class="header-text">2805</div>
+    </div>
 </header>
 <div style="display: flex">
     <div>
@@ -69,7 +73,7 @@
         <form method="post" class="variables">
 
             <div>
-                X variable:
+                <span>X variable:</span>
                 <label>
                     -2
                     <input type="checkbox" name="xbox" value="-2">
@@ -106,21 +110,23 @@
                     2
                     <input type="checkbox" name="xbox" value="2">
                 </label>
+                <span id="x-message" style="display: none" class="error-message">⬅ Please, choose exactly one option.</span>
             </div>
 
-            <br><br>
+            <br>
 
-            <div>
+            <div class="text-field">
                 <label>
-                    Y variable
-                    <input type="text" id="y_input" name="y_input" placeholder="(-5; 5)">
+                    <span>Y variable:</span>
+                    <input type="text" id="y_input" name="y_input" placeholder="(-5; 5)" autocomplete="off">
+                    <span id="input-message" style="display: none" class="error-message"></span>
                 </label>
             </div>
 
-            <br><br>
+            <br>
 
             <div>
-                R variable
+                <span>R variable:</span>
                 <label>
                     1
                     <input type="checkbox" name="rbox" value="1">
@@ -141,12 +147,13 @@
                     5
                     <input type="checkbox" name="rbox" value="5">
                 </label>
+                <span id="r-message" style="display: none" class="error-message">⬅ Please, choose exactly one option.</span>
             </div>
 
             <br>
 
             <div>
-                <button id="calc_button">Calculate</button>
+                <button id="calc_button" class="calc-button" type="button">Calculate</button>
             </div>
 
         </form>

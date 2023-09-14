@@ -1,24 +1,82 @@
 body {
-    font: 14pt sans-serif;
+    font: 14pt Bahnschrift;
 }
 
-header {
+.header {
+    background-color: rgba(47, 109, 249, 0.5);
+    border: 3px solid rgb(10, 47, 134);;
+    display: flex;
+    font-size: 28pt;
+    font-weight: bold;
+    padding: 10px 10px 15px;
+    margin-bottom: 10px;
+}
+
+.header-text {
+    padding-right: 100px;
     color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    background-color: rgba(47, 109, 249, 0.5)
+    text-shadow: 2px 2px rgb(10, 47, 134);
 }
 
 svg {
     border: 3px solid black;
 }
 
+.variables {
+    padding: 5px 10px;
+    font-weight: lighter;
+    margin-bottom: 5px;
+}
+
 input:invalid {
     background-color: rgba(255, 0, 0, 0.3);
 }
 
-.variables {
-    padding: 10px;
-    /*position: relative;*/
-    /*top: -500px;*/
-    /*left: 520px;*/
+.calc-button {
+    border-radius: 3px;
+    border-color: rgb(10, 47, 134);
+    border-width: 2px;
+    padding: 10px 15px;
+    background-color: rgba(47, 109, 249, 0.5);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px rgb(10, 47, 134);
+    cursor: pointer;
+    font-size: 12pt;
+    transition: background-color 150ms;
+}
+
+.calc-button:hover {
+    background-color:rgba(47, 109, 249, 0.7);
+}
+
+.calc-button:active {
+    background-color: rgba(47, 109, 249, 1);
+}
+
+input {
+    margin-left: 0;
+    margin-right: 10px
+}
+
+span {
+    margin-right: 10px
+}
+
+.text-field > label > input {
+    border-radius: 3px;
+    border-color: rgb(10, 47, 134);
+    border-width: 2px;
+    padding: 5px;
+}
+
+.error-message {
+    color: white;
+    font-size: 12pt;
+    font-weight: bold;
+    border-radius: 3px;
+    border: 2px solid rgb(10, 47, 134);
+    background-color: rgba(47, 109, 249, 0.5);
+    text-shadow: 1px 1px rgb(10, 47, 134);
+    padding: 5px 10px
 }

@@ -1,77 +1,110 @@
 const yInput = document.getElementById("y_input")
-yInput.addEventListener("input", (event) => {
+const calcButton = document.getElementById("calc_button")
+const inputErrorMessage = document.getElementById("input-message")
+
+yInput.addEventListener("input", () => {
     yInput.setCustomValidity("")
 })
-
-const calcButton = document.getElementById("calc_button")
 calcButton.onclick = handleCalculateButtonPress
 
-const form = document.forms[0]
-form.onsubmit = handleCalculateButtonPress
-
 function handleCalculateButtonPress() {
-    let yInputReference = {Value: document.getElementById("y_input")}
-    if (checkForInput(yInputReference) && checkInputFormat(yInputReference)
-        && checkFracLength(yInputReference) && checkValue(yInputReference) && checkCheckboxes()) {
-        sendParameters()
+    if (checkInput() & checkCheckboxes()) {
+        alert("nice")
     }
 }
 
-function checkForInput(textFieldReference) {
-    let textField = textFieldReference.Value
-    if (textField.value.length < 1) {
-        textField.setCustomValidity("Please, enter the Y variable")
+function checkInput() {
+    return checkForInput() && checkInputFormat() && checkFracLength() && checkValue()
+}
+
+function checkForInput() {
+    yInput.validity.valid = false
+    if (yInput.value.length < 1) {
+        setInputMessage("Please, enter the Y variable")
+        showMessage(inputErrorMessage)
         return false
     }
-    textField.setCustomValidity("")
+    setInputMessage("")
+    hideMessage(inputErrorMessage)
     return true
 }
 
-function checkInputFormat(textFieldReference) {
-    let textField = textFieldReference.Value
+function checkInputFormat() {
     let pattern = /^-?\d+(\.\d+)?$/
-    let value = textField.value.trim()
+    let value = yInput.value.trim()
     if (pattern.test(value) && value.match(pattern)[0].length === value.length) {
-        textField.setCustomValidity("")
+        setInputMessage("")
+        hideMessage(inputErrorMessage)
         return true
     }
-    textField.setCustomValidity("The input is not a decimal number.")
+    setInputMessage("The input is not a decimal number.")
+    showMessage(inputErrorMessage)
     return false
 }
 
-function checkFracLength(textFieldReference) {
-    let textField = textFieldReference.Value
-    if (textField.value.includes(".")) {
-        if (textField.value.split(".")[1].length > 15) {
-            textField.setCustomValidity("The fractional part of the entered number is too long, " +
-                "precise calculation is impossible.")
+function setInputMessage(message) {
+    yInput.setCustomValidity(message)
+    inputErrorMessage.innerHTML = message.length !== 0 ? "⬅ " + message : ""
+    showMessage(inputErrorMessage)
+}
+
+function checkFracLength() {
+    if (yInput.value.includes(".")) {
+        if (yInput.value.split(".")[1].length > 15) {
+            setInputMessage("The fractional part of the entered number is too long, precise calculation is impossible.")
+            showMessage(inputErrorMessage)
             return false
         }
     }
-    textField.setCustomValidity("")
+    setInputMessage("")
+    hideMessage(inputErrorMessage)
     return true
 }
-function checkValue(textFieldReference) {
-    let textField = textFieldReference.Value
-    let yCoordinate = parseFloat(textField.value)
+
+function checkValue() {
+    let yCoordinate = parseFloat(yInput.value)
     if (-5 < yCoordinate && yCoordinate < 5) {
-        textField.setCustomValidity("")
+        setInputMessage("")
+        hideMessage(inputErrorMessage)
+        yInput.setCustomValidity("")
         return true
     }
-    textField.setCustomValidity("Entered number is out of the set range.")
+    setInputMessage("Entered number is out of the set range.")
+    showMessage(inputErrorMessage)
     return false
 }
 
 function checkCheckboxes() {
-
+    return checkXBoxes() & checkRBoxes()
 }
 
 function checkXBoxes() {
     let checkedXBoxes = document.querySelectorAll('input[name="xbox"]:checked').length
+    let errorMessage = document.getElementById("x-message");
     if (checkedXBoxes !== 1) {
-
+        showMessage(errorMessage)
+        return false
+    } else {
+        hideMessage(errorMessage)
+        return true
     }
 }
-function sendParameters() {
 
+function checkRBoxes() {
+    let checkedXBoxes = document.querySelectorAll('input[name="rbox"]:checked').length
+    let errorMessage = document.getElementById("r-message");
+    if (checkedXBoxes !== 1) {
+        showMessage(errorMessage)
+        return false
+    } else {
+        hideMessage(errorMessage)
+        return true
+    }
+}
+function showMessage(errorMessage) {
+    errorMessage.style.display = "inline";
+}
+
+function hideMessage(errorMessage) {
+    errorMessage.style.display = "none";
 }
