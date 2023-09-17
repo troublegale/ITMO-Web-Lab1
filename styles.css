@@ -73,7 +73,9 @@ span {
     border-radius: 3px;
     border-color: rgb(10, 47, 134);
     border-width: 2px;
+    width: 17%;
     padding: 0.5%;
+    text-align: center;
 }
 
 .error-message {
