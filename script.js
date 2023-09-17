@@ -21,7 +21,7 @@ function sendParameters() {
     let currentTime = getCurrentTime()
     $.ajax({
         type: "POST",
-        url: "main.php",
+        url: "server.php",
         dataType: "html",
         data: "&x=" + x + "&y=" + y + "&r=" + r + "&time=" + currentTime,
         success: function(data) {
