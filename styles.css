@@ -4,7 +4,7 @@ body {
 
 .header {
     background-color: rgba(47, 109, 249, 0.5);
-    border: 3px solid rgb(10, 47, 134);;
+    border: 3px solid black;
     display: flex;
     font-size: 28pt;
     justify-content: start;
@@ -39,8 +39,7 @@ input:invalid {
 
 .calc-button {
     border-radius: 3px;
-    border-color: rgb(10, 47, 134);
-    border-width: 2px;
+    border: 2px solid black;
     padding: 10px 15px;
     background-color: rgba(47, 109, 249, 0.5);
     color: white;
@@ -49,6 +48,7 @@ input:invalid {
     cursor: pointer;
     font-size: 12pt;
     transition: background-color 150ms;
+    margin-top: 3px;
 }
 
 .calc-button:hover {
@@ -87,29 +87,42 @@ span {
 }
 
 table {
+    margin-top: 25px;
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid black;
+    border: 3px solid black;
 }
 
 caption {
+    color: white;
+    text-shadow: 1px 1px rgb(10, 47, 134);
+    background-color: rgba(47, 109, 249, 0.5);
     padding: 5px;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+    font-weight: bold;
+}
+
+thead {
+    color: white;
+    text-shadow: 1px 1px rgb(10, 47, 134);
+    background-color: rgba(47, 109, 249, 0.5);
 }
 
 td {
+    font-weight: normal;
     padding: 5px;
-}
-
-td {
     text-align: center;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
 }
 
-thead th, tbody th {
-    border: 2px solid black;
+thead td {
+    border-width: 3px;
+    border-bottom: 2px solid black;
 }
 
 .result-head {
