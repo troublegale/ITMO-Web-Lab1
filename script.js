@@ -80,7 +80,7 @@ function setInputMessage(message) {
 
 function checkFracLength() {
     if (yInput.value.includes(".")) {
-        if (yInput.value.split(".")[1].length > 15) {
+        if (yInput.value.split(".")[1].length > 13) {
             setInputMessage("The fractional part of the entered number is too long, precise calculation is impossible.")
             showMessage(inputErrorMessage)
             return false
