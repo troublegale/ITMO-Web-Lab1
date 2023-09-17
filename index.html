@@ -69,7 +69,7 @@
         </svg>
     </div>
 
-    <div>
+    <div class="right-part">
         <form method="post" class="variables">
 
             <div>
@@ -110,7 +110,8 @@
                     2
                     <input type="checkbox" name="xbox" value="2">
                 </label>
-                <span id="x-message" style="display: none" class="error-message">⬅ Please, choose exactly one option.</span>
+                <span id="x-message" style="display: none"
+                      class="error-message">⬅ Please, choose exactly one option.</span>
             </div>
 
             <br>
@@ -147,7 +148,8 @@
                     5
                     <input type="checkbox" name="rbox" value="5">
                 </label>
-                <span id="r-message" style="display: none" class="error-message">⬅ Please, choose exactly one option.</span>
+                <span id="r-message" style="display: none"
+                      class="error-message">⬅ Please, choose exactly one option.</span>
             </div>
 
             <br>
@@ -159,14 +161,17 @@
         </form>
         <div>
             <table id="result-table">
-                <thead>Calculation history</thead>
-                <tr>
+                <caption>Calculation history</caption>
+                <thead>
+                <tr class="result-head">
                     <td>X</td>
                     <td>Y</td>
                     <td>R</td>
+                    <td>Result</td>
                     <td>Current time</td>
                     <td>Calculation time</td>
                 </tr>
+                </thead>
             </table>
         </div>
     </div>

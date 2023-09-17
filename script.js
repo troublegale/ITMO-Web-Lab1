@@ -9,7 +9,7 @@ yInput.addEventListener("input", () => {
 calcButton.onclick = handleCalculateButtonPress
 
 function handleCalculateButtonPress() {
-    if (checkInput() & checkCheckboxes()) {
+    if (checkInput() & checkCheckboxes()) { // singular '&' cause wanna check both independently
         sendParameters()
     }
 }
@@ -18,15 +18,29 @@ function sendParameters() {
     let x = document.querySelectorAll('input[name="xbox"]:checked')[0].value
     let y = yInput.value;
     let r = document.querySelectorAll('input[name="rbox"]:checked')[0].value
+    let currentTime = getCurrentTime()
     $.ajax({
         type: "POST",
         url: "main.php",
         dataType: "html",
-        data: "&x=" + x + "&y=" + y + "&r=" + r + "&time" + new Date().toTimeString(),
+        data: "&x=" + x + "&y=" + y + "&r=" + r + "&time=" + currentTime,
         success: function(data) {
             resultTable.innerHTML += data
         }
     })
+}
+
+function getCurrentTime() {
+    let date = new Date();
+    let hrs = complement(date.getHours())
+    let mns = complement(date.getMinutes())
+    let scs = complement(date.getSeconds())
+    return hrs + ":" + mns + ":" + scs
+}
+
+function complement(unit) {
+    let num = Number(unit)
+    return num < 10 ? "0".concat(num) : num
 }
 
 function checkInput() {
