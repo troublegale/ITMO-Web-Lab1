@@ -9,7 +9,7 @@ yInput.addEventListener("input", () => {
 calcButton.onclick = handleCalculateButtonPress
 
 function handleCalculateButtonPress() {
-    if (checkInput() & checkCheckboxes()) { // singular '&' cause wanna check both independently
+    if (checkInput() & checkCheckboxes()) { // singular '&' because we want to check both independently
         sendParameters()
     }
 }
