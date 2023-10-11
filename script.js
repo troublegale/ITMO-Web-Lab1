@@ -2,10 +2,28 @@ const yInput = document.getElementById("y_input")
 const calcButton = document.getElementById("calc_button")
 const inputErrorMessage = document.getElementById("input-message")
 const resultTable = document.getElementById("result-table")
+const xCheckboxes = document.querySelectorAll('.x_checkbox');
+const rCheckboxes = document.querySelectorAll('.r_checkbox');
+
+function addCheckboxChangeHandler(checkboxes) {
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                checkboxes.forEach(function (otherCheckbox) {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+            }
+        });
+    });
+}
 
 yInput.addEventListener("input", () => {
     yInput.setCustomValidity("")
 })
+addCheckboxChangeHandler(xCheckboxes);
+addCheckboxChangeHandler(rCheckboxes);
 calcButton.onclick = handleCalculateButtonPress
 
 function handleCalculateButtonPress() {
